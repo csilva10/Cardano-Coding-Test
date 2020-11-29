@@ -1,0 +1,50 @@
+=======
+/ SQL /
+=======
+
+Any SQL dialect will suffice
+================================
+1) >> Create a query to return the unique rows in a table:
+
+--------
+SINTAX:
+--------
+SELECT DISTINCT column1, column2, ...
+FROM table_name;
+
+--------
+EXAMPLE:
+--------
+SELECT DISTINCT Country FROM Customers;
+
+2) >> Write a command to insert values into a table
+
+--------
+SINTAX:
+--------
+INSERT INTO table_name (Column1, Column 2....)
+  VALUES (value1, value2, ...);
+
+--------
+EXAMPLE:
+--------  
+INSERT INTO Customers (ID, Name) VALUES (1,'Carlos');
+
+3) >> Create a query that joins two tables together. Note, all rows from the first table must be in the result-set 
+      (e.g. given customer and order tables, return all customers and any orders for each customer)
+
+--------
+SINTAX:
+--------
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+
+--------
+EXAMPLE:
+--------  
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;

@@ -100,8 +100,7 @@ public class CodeTest {
     }
 
     /**
-     * Write a function that reads from a file and prints the contents to the console
-     * @throws IOException 
+     * Write a function that reads from a file and prints the contents to the console     
      */
     public static void writeContentsToConsole()  {      
     	
@@ -138,10 +137,10 @@ public class CodeTest {
     }
     
     /**
-    *  
-    /* Method that throws the IllegalArgumentException in case the argument is invalid.
-    * @param pctg
-    */
+     * Set percentage
+     * @param pctg
+     * @throws IllegalArgumentException
+     */
     public static void setPercentage(int pctg) throws IllegalArgumentException {
         if( pctg < 0 || pctg > 100) {
         	throw new IllegalArgumentException(">> pctg has an invalid value <<");
@@ -152,7 +151,6 @@ public class CodeTest {
     /**
      * Write a console application that accepts a random sequence of numbers and loops through looking for 2 equal, consecutive numbers.
      * When found write 'Snap' to the console else print out the number (e.g. 1,3,5,5,'Snap').
-     * @throws IOException 
      */
     public static void puzzle() { 
     	
@@ -192,6 +190,11 @@ public class CodeTest {
 		}
        }
     
+	/**
+	 * Method to associate the number of occurrences of a word in a text.
+	 * @param str
+	 * @return Object []
+	 */
 	public static Object [] aux (String str) {
 		ArrayList<String> list = new ArrayList<String>();   
 		Object [] strResult;
@@ -212,7 +215,12 @@ public class CodeTest {
         return strResult;
         
 	}
-
+	
+    /**
+     * Read a file whose argument is the path where the file is located 
+     * and shows the content by console.
+     * @param path
+     */
     public static void readFile(String path) {
     	try {
     		String content = Files.readString(Path.of(path));
@@ -222,11 +230,23 @@ public class CodeTest {
 		}
     }
     
+    /**
+     * Write a text given as an argument, in a file whose argument is the path where the file is located.
+     * @param text
+     * @param localPath
+     * @throws IOException
+     */
     public static void writeFile(String text, String localPath) throws IOException{
     	Path path = Paths.get(localPath); 
     	Files.write(path, text.getBytes());
     }    
 
+    /**
+     * Write data given as an argument, in a file whose argument is the path where the file is located.
+     * @param pathFile
+     * @param data
+     * @param create
+     */
     public static void writeFileJ11(String pathFile, String data, boolean create) {
 		try {
 			Path path = null;

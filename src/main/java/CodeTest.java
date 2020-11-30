@@ -75,7 +75,7 @@ public class CodeTest {
      * Given a sentence create a function that returns the number of unique words
      * @param text
      * @param wordToFind
-     * @return
+     * @return int number of unique words
      */
     public static int findWordCount(String text, String wordToFind) {
 		Pattern pattern = Pattern.compile(wordToFind);
@@ -87,13 +87,13 @@ public class CodeTest {
 		return count;
     }
 
-	/**
-	 * Write a function 'composeu' that takes two unary functions and returns a unary function that calls them both. 
-	 * A unary function has a single argument and a single return value    
-	 * @param f1
-	 * @param f2
-	 * @return
-	 */
+  /**
+   * Write a function 'composeu' that takes two unary functions and returns a unary function that calls them both. 
+   * A unary function has a single argument and a single return value    
+   * @param f1
+   * @param f2
+   * @return Function<Integer,Integer>
+   */
     public static Function<Integer,Integer> composeU(Function<Integer,Integer> f1, Function<Integer,Integer> f2){
 		Function<Integer, Integer> result = f2.compose(f1);
 		return result;
@@ -123,7 +123,10 @@ public class CodeTest {
 		}
     	 */    	
     }
-
+	
+    /**
+     * Example of how a function would handle an invalid argument
+     */
     public static void handleInvalidArgument() {
 		int pctg = 150;
 		try {
@@ -135,11 +138,11 @@ public class CodeTest {
     }
     
     /**
-    * Set percentage 
-    *
+    *  
+    /* Method that throws the IllegalArgumentException in case the argument is invalid.
     * @param pctg
     */
-    public static  void setPercentage(int pctg) throws IllegalArgumentException {
+    public static void setPercentage(int pctg) throws IllegalArgumentException {
         if( pctg < 0 || pctg > 100) {
         	throw new IllegalArgumentException(">> pctg has an invalid value <<");
          }
@@ -148,7 +151,7 @@ public class CodeTest {
 
     /**
      * Write a console application that accepts a random sequence of numbers and loops through looking for 2 equal, consecutive numbers.
- 	 * When found write 'Snap' to the console else print out the number (e.g. 1,3,5,5,'Snap').
+     * When found write 'Snap' to the console else print out the number (e.g. 1,3,5,5,'Snap').
      * @throws IOException 
      */
     public static void puzzle() { 

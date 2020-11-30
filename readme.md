@@ -1,4 +1,10 @@
 # Cardano Software Engineer Coding Test
+## Note
+### Java Program
+The solution to the Java Program is in the master branch.
+### SQL
+The solution to the SQL Code is in the path Cardano-Coding-Test/src/main/resources/SQL.txt
+
 ## Java
 This is a skeleton Java / Gradle version of the test
 ## Test

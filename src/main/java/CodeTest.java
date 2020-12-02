@@ -44,8 +44,8 @@ public class CodeTest {
         cts.writeContentsToConsole_returnsExpectedResult();
         System.out.println(">> Call handleInvalidArgument -> Done");           
         cts.handleInvalidArgument_returnsExpectedResult();
-        System.out.println(">> Call puzzle -> Done");     
-        cts.puzzle_returnsExpectedResult();             
+        System.out.println(">> Call puzzle -> Done");
+        cts.puzzle_returnsExpectedResult();            
     }
         
  
@@ -88,13 +88,13 @@ public class CodeTest {
 		return count;
     }
 
-	/**
-	 * Write a function 'composeu' that takes two unary functions and returns a unary function that calls them both. 
-	 * A unary function has a single argument and a single return value    
-	 * @param f1
-	 * @param f2
-	 * @return
-	 */
+  /**
+   * Write a function 'composeu' that takes two unary functions and returns a unary function that calls them both. 
+   * A unary function has a single argument and a single return value    
+   * @param f1
+   * @param f2
+   * @return Function<Integer,Integer>
+   */
     public static Function<Integer,Integer> composeU(Function<Integer,Integer> f1, Function<Integer,Integer> f2){
 		Function<Integer, Integer> result = f2.compose(f1);
 		return result;
@@ -143,7 +143,7 @@ public class CodeTest {
      * @param pctg
      * @throws IllegalArgumentException
      */
-    public static  void setPercentage(int pctg) throws IllegalArgumentException {
+    public static void setPercentage(int pctg) throws IllegalArgumentException {
         if( pctg < 0 || pctg > 100) {
         	throw new IllegalArgumentException(">> pctg has an invalid value <<");
          }
@@ -160,6 +160,7 @@ public class CodeTest {
 		int num = 1;
 		int prev = 12;
 		int max = 10;
+
 		int i = 0;
 		List<String> list = new ArrayList<String>();
 		//Random rand = new Random();
@@ -189,8 +190,8 @@ public class CodeTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-    
+	}  
+	
     /**
      * Fixed seed so that random number generation sequence is same to realize the test.
      * @return
@@ -198,7 +199,8 @@ public class CodeTest {
     static long getSeed() {
         return 1;
     }
-	 
+    
+
 	/**
 	 * Method to associate the number of occurrences of a word in a text.
 	 * @param str
@@ -271,5 +273,5 @@ public class CodeTest {
 			e.printStackTrace();
 		}
     } 
- 
 }
+

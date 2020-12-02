@@ -42,9 +42,7 @@ public class CodeTest {
         System.out.println(">> Call handleInvalidArgument -> Done");           
         cts.handleInvalidArgument_returnsExpectedResult();
         System.out.println(">> Call puzzle -> Done");     
-        //cts.puzzle_returnsExpectedResult();
-        puzzle();
-       
+        cts.puzzle_returnsExpectedResult();  
     }
         
  
@@ -160,7 +158,8 @@ public class CodeTest {
 		int max = 10;
 		int i=0;		
 		List <String> list = new ArrayList<String>();		
-		Random rand = new Random();
+		//Random rand = new Random();
+		Random rand = new Random(getSeed());
 		boolean found = false;
 		
 		while (i<max && !found) {		
@@ -189,6 +188,14 @@ public class CodeTest {
 			e.printStackTrace();
 		}
        }
+	
+    /**
+     * Fixed seed so that random number generation sequence is same to realize the test.
+     * @return
+     */
+    static long getSeed() {
+        return 1;
+    }
     
 	/**
 	 * Method to associate the number of occurrences of a word in a text.

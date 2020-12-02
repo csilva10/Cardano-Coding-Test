@@ -129,7 +129,7 @@ public class CodeTestSpec {
     
 
 
-	@Test   
+    @Test   
     public void puzzle_returnsExpectedResult() {
         
 	CodeTest.puzzle();

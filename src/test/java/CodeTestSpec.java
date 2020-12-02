@@ -132,9 +132,9 @@ public class CodeTestSpec {
 	@Test   
     public void puzzle_returnsExpectedResult() {
         
-		CodeTest.puzzle();
+	CodeTest.puzzle();
 		
-		// arrange
+	// arrange
         Path path = Paths.get("src/main/resources/test2.txt");
         String EXPECTED ="";        
 		try {
@@ -143,8 +143,7 @@ public class CodeTestSpec {
 			e.printStackTrace();
 		} 		
 		
-		// act
-  	    // read console
+	// act  	    
         final String actual = "5,8,7,3,4,4,'Snap'";
         
         // assert

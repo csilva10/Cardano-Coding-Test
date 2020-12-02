@@ -3,7 +3,7 @@
 =======
 
 Any SQL dialect will suffice
-================================
+===============================
 1) >> Create a query to return the unique rows in a table:
 
 --------

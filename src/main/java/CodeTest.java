@@ -1,4 +1,7 @@
+import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -42,9 +45,7 @@ public class CodeTest {
         System.out.println(">> Call handleInvalidArgument -> Done");           
         cts.handleInvalidArgument_returnsExpectedResult();
         System.out.println(">> Call puzzle -> Done");     
-        //cts.puzzle_returnsExpectedResult();
-        puzzle();
-       
+        cts.puzzle_returnsExpectedResult();             
     }
         
  
@@ -75,7 +76,7 @@ public class CodeTest {
      * Given a sentence create a function that returns the number of unique words
      * @param text
      * @param wordToFind
-     * @return
+     * @return int number of unique words
      */
     public static int findWordCount(String text, String wordToFind) {
 		Pattern pattern = Pattern.compile(wordToFind);
@@ -101,7 +102,6 @@ public class CodeTest {
 
     /**
      * Write a function that reads from a file and prints the contents to the console
-     * @throws IOException 
      */
     public static void writeContentsToConsole()  {      
     	
@@ -124,6 +124,9 @@ public class CodeTest {
     	 */    	
     }
 
+    /**
+     * Example of how a function would handle an invalid argument
+     */
     public static void handleInvalidArgument() {
 		int pctg = 150;
 		try {
@@ -134,11 +137,12 @@ public class CodeTest {
 		}
     }
     
+
     /**
-    * Set percentage 
-    *
-    * @param pctg
-    */
+     * Set percentage
+     * @param pctg
+     * @throws IllegalArgumentException
+     */
     public static  void setPercentage(int pctg) throws IllegalArgumentException {
         if( pctg < 0 || pctg > 100) {
         	throw new IllegalArgumentException(">> pctg has an invalid value <<");
@@ -149,47 +153,58 @@ public class CodeTest {
     /**
      * Write a console application that accepts a random sequence of numbers and loops through looking for 2 equal, consecutive numbers.
  	 * When found write 'Snap' to the console else print out the number (e.g. 1,3,5,5,'Snap').
-     * @throws IOException 
      */
     public static void puzzle() { 
-    	
+
 		// Variables
-    	int num = 1;
-		int prev= 12;
+		int num = 1;
+		int prev = 12;
 		int max = 10;
-		int i=0;		
-		List <String> list = new ArrayList<String>();		
-		Random rand = new Random();
+		int i = 0;
+		List<String> list = new ArrayList<String>();
+		//Random rand = new Random();
+		Random rand = new Random(getSeed());
 		boolean found = false;
-		
-		while (i<max && !found) {		
+		while (i < max && !found) {
 			num = rand.nextInt(10);
 			System.out.print(num);
 			list.add(String.valueOf(num));
-			if (i<max-1) {				
+			if (i < max - 1) {
 				System.out.print(",");
-			}						
-			if (i>0 && num == prev) {				
+			}
+			if (i > 0 && num == prev) {
 				System.out.print("'Snap'");
 				list.add("'Snap'");
 				found = true;
 			} else {
-				prev = num;	
-			}			
-			i++;			
+				prev = num;
+			}
+			i++;
 		}
-		System.out.println();	
-		
+		System.out.println();
 		String text = list.toString().join(",", list);
 		String localPath = "src/main/resources/test2.txt";
 		try {
 			writeFile(text, localPath);
-		} catch (IOException e) {			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-       }
+	}
     
-	public static Object [] aux (String str) {
+    /**
+     * Fixed seed so that random number generation sequence is same to realize the test.
+     * @return
+     */
+    static long getSeed() {
+        return 1;
+    }
+	 
+	/**
+	 * Method to associate the number of occurrences of a word in a text.
+	 * @param str
+	 * @return Object []
+	 */
+	 public static Object [] aux (String str) {
 		ArrayList<String> list = new ArrayList<String>();   
 		Object [] strResult;
 		
@@ -210,7 +225,12 @@ public class CodeTest {
         
 	}
 
-    public static void readFile(String path) {
+    /**
+     * Read a file whose argument is the path where the file is located 
+     * and shows the content by console.
+     * @param path
+     */
+	 public static void readFile(String path) {
     	try {
     		String content = Files.readString(Path.of(path));
     		System.out.println(content);
@@ -219,11 +239,23 @@ public class CodeTest {
 		}
     }
     
+	/**
+	 * Write a text given as an argument, in a file whose argument is the path where the file is located.
+	 * @param text
+	 * @param localPath
+	 * @throws IOException
+	 */
     public static void writeFile(String text, String localPath) throws IOException{
     	Path path = Paths.get(localPath); 
     	Files.write(path, text.getBytes());
     }    
 
+    /**
+     * Write data given as an argument, in a file whose argument is the path where the file is located.
+     * @param pathFile
+     * @param data
+     * @param create
+     */
     public static void writeFileJ11(String pathFile, String data, boolean create) {
 		try {
 			Path path = null;
@@ -238,5 +270,6 @@ public class CodeTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    }
+    } 
+ 
 }
